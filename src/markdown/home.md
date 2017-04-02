@@ -4,6 +4,8 @@ imports:
 ---
 # Welcome to LEVEL 0 of the ChinguGameDev project...
 
+![Hurdle](/assets/1.jpg)
+
 ### ... and congratulations on overcoming the first hurdle (=logging in) on your journey to create the best game in the universe!
 
 But since you are a clever one you already knew that this was only the beginning...
@@ -34,6 +36,8 @@ Now, that you know the basics, let's look at the next steps:
 
 ### 1. Meet your team / Project Setup
 
+![Meet the team](/assets/2.jpg)
+
 I can smell that you are eager to start hacking away at your keyboard but since this is a team project there are a few things you should do first:
 
 #### a) Chat with your team mates
@@ -63,6 +67,9 @@ Since your team's official name is still something like 'game-dev-team-37' brain
 <CheckBox id="pickedTeamName" label="Picked a new team name" category="Project Setup"/>
 ```
 ### d) It's a cat, it's an octopus, it's a Github? O_o
+
+![Octopus Cat](/assets/3.jpg)
+
 Now that you got your shiny new name I can see that you want to start already - and I can feel you! But hold on, cowboy! This is a team effort, so we need a way for you and your
 team members to collaborate. Sending files around by mail or using a shared dropbox folder will only get you so far in this endeavour, so it is highly recommended, if not expected,
 for you and your mates to use git via [Github](https://github.com) for that.
@@ -95,6 +102,7 @@ If you need a refresher or have never actually used the canvas before, [here's a
 ```
 
 #### b) Deconstruct the plumber!
+![Plumber](/assets/4.jpg)
 Now that you are somewhat familiar with the canvas you have basically everything you need to succeed, so it's time to break down Super Mario into bite-sized pieces:
 
 Take a look at [this simple mario game](http://codepen.io/harsay/full/gMOZrB) and then [this video](https://www.youtube.com/watch?v=ZH2wGpEZVgE) explaining the design of the first level of Super Mario Bros in great detail.
@@ -128,6 +136,7 @@ With that fancy list you can easily assign those tasks to each individual team m
 > The soft due date for the above steps is 5-7 days total!
 
 ### 3. Let the Clone Wars begin!
+![Clone](/assets/5.jpg)
 With all the prepaprations and planning out of the way, the juicy part of the project is about to begin. We'll create our own Super Mario Clone! 
 
 This is the most tricky part of it all - not only will it test your coding skills but also your ability to collaborate with your team.
