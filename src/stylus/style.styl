@@ -1,0 +1,229 @@
+// $color-background = #fff
+// $color-initial = #000
+//$color-primary = #8bc34a
+$color-primary = #f1c40f
+$color-text = rgba(0,0,0,0.84)
+// $color-secondary = #606c76
+// $color-tertiary = #f4f5f6
+// $color-quaternary = #d1d1d1
+// $color-quinary = #e1e1e1
+$color-accent = #8bc34a
+
+@import '../../node_modules/jeet/'
+@import './sutairu'
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+body
+  font-family "Open Sans"
+  background #fafafa
+
+header
+  position fixed
+  z-index 999999
+  color $color-text
+  width 100%
+  background $color-background
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16)
+  clearfix()
+
+.headerNotLoggedIn
+  color white
+  background transparent
+  box-shadow: none
+  .headerLogo
+    color white
+    &:hover
+      span:nth-child(2)
+        color white
+  .loginButton
+    color white
+    border 1px solid white
+
+.headerContainer
+  center(1280px)
+  
+.headerLogo
+  float left
+  color $color-text
+  transition color 0.5s ease-in-out
+  display inline-block
+  margin-bottom 0px
+  font-weight bold
+  &:hover
+    color $color-primary
+    span:nth-child(2)
+      color $color-text
+  span:nth-child(2)
+    transition color 0.5s ease-in-out
+    color $color-primary
+
+.nav
+  list-style none
+  float right
+  margin 0
+  padding 0
+  margin-top 5px
+
+.navItem
+  transition background 0.5s ease-out
+  display: inline-block
+  padding 10px 20px
+  margin 0  
+  a
+    text-transform uppercase
+    color $color-text
+  &:hover
+    background $color-primary
+    a
+      color white
+
+.loginButton
+  color $color-text
+  float right
+  margin-top 8px
+  background none
+  border 1px solid alpha($color-text, 0.5)
+  &:hover
+    //color $color-primary
+    background $color-primary
+    border 1px solid alpha($color-primary, 0.5)
+  &:focus
+    border 1px solid alpha($color-text, 0.5)
+    color $color-text
+hr
+  margin-top 0
+  margin-bottom 10px
+
+.checkBox
+  text-align left
+label
+  margin-left 10px
+  display inline-block
+input[type="checkbox"]
+  margin-bottom 25px
+
+button
+  transition all 0.5s ease-in-out
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.14)
+
+.button
+  transition all 0.5s ease-in-out
+
+.homeContent
+  padding-top 100px
+  padding-bottom 100px
+  center(960px)
+  h1, h2, h3, h4, h5
+    font-weight bold
+  h1
+    margin-top 30px
+
+.teamContent
+  padding-top 100px
+  center(960px)
+
+.teamMembers
+  border-radius 4px
+  clearfix()
+  border 1px solid rgba(0,0,0,0.05)
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.14)
+  background white
+  padding 10px
+.teamMember
+  span(1/2, $cycle:2)
+  border-radius 4px
+  //border 1px solid rgba(0,0,0,0.05)
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.14)
+
+.teamProgress
+  background white
+  border-radius 4px
+  border 1px solid rgba(0,0,0,0.05)
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.14)
+  margin-top 40px
+  padding 20px
+  text-align right
+  color alpha($color-text, 0.6)
+.teamProgressTotal
+  font-weight bold
+
+.teamName
+  font-weight bold
+  margin-bottom 40px
+  text-align center
+.teamNameChange
+  position relative
+.teamNameInputOKButton
+  top 0
+  right 0
+  position absolute
+.tmAvatar
+  margin 10px
+  border-radius 50%
+  border 2px solid rgba(0,0,0,0.05)
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.14)
+  vertical-align: middle
+.tmName
+  display inline-block
+  vertical-align: middle
+.tmLastLogin
+  vertical-align: middle
+  text-align right
+  margin-top -30px
+  margin-right 10px
+
+
+.searchHero
+  //center(1280px)
+  background url('/assets/bg.jpg')
+  background-size cover
+  box-shadow inset 0 0 0 1000px rgba(0,0,0,0.3);
+  position relative
+  height 100vh
+  overflow hidden
+
+.heroContent
+  center(960px)
+  margin-top 200px
+
+.heroTitle
+  transition opacity 0.6s ease-in-out
+  text-align center
+  font-size 500%
+  text-shadow 1px 1px rgba(0,0,0,0.7)
+  font-weight bold
+  color white
+  span:nth-child(2)
+    color $color-primary
+
+.heroSubTitle
+  color white
+  font-weight bold
+  font-size 300%
+  transition opacity 0.5s ease-in-out
+  text-align center
+  text-shadow 1px 1px rgba(0,0,0,0.7)  
+  span:nth-child(2)
+    font-weight bold
+  span:nth-child(3)
+    color $color-primary
+    font-weight bold
+  span:nth-child(4)
+    font-weight bold
+
+.heroLoginButton
+  font-weight thin
+  text-transform none
+  margin-top 60px
+  padding 10px
+  padding-bottom 50px
+  width 50%
+  border-radius 9999px
+  margin-left 25%
+  font-size 180%
+  background $color-accent
+  border none
+  &:hover
+    background $color-primary
+    
+  
