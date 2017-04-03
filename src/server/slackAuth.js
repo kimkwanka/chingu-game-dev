@@ -6,7 +6,8 @@ const axios = require('axios');
 
 const clientID = process.env.SLACK_CLIENT_ID || '';
 const clientSecret = process.env.SLACK_CLIENT_SECRET || '';
-const callbackURL = process.env.SLACK_CALLBACK_URL || '';
+const callbackURL = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8080/auth/slack/callback' : process.env.SLACK_CALLBACK_URL;
+
 const token = process.env.SLACK_TOKEN || '';
 
 const slackAuth = (app) => {
@@ -20,7 +21,7 @@ const slackAuth = (app) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use(new SlackStrategy({ clientID, clientSecret, redirect_uri: callbackURL },
+  passport.use(new SlackStrategy({ clientID, clientSecret, callbackURL },
   (accessToken, scopes, team, extra, profiles, done) => {
     axios.get(`https://slack.com/api/users.info?token=${token}&user=${profiles.user.id}`)
     .then((response) => {

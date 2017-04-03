@@ -83,12 +83,14 @@ class Team extends React.Component {
     });
 
     this.props.teamMembers.forEach((tm) => {
-      const lastLogin = (tm.lastLogin !== -1) ? new Date(tm.lastLogin).toUTCString() : '---';
+      const lastLogin = (tm.lastLogin !== -1) ? new Date(tm.lastLogin).toLocaleString() : '---';
+      const timeZoneOffset = (tm.timeZoneOffset > 1) ? `Time Zone: UTC +${tm.timeZoneOffset / 3600}` : `Time Zone: UTC ${tm.timeZoneOffset / 3600}`;
       members.push(
         <div className="teamMember">
           <img className="tmAvatar" src={tm.avatar} alt="" />
           <h2 className="tmName">{tm.name}</h2>
           <p className="tmLastLogin">{`Last login: ${lastLogin}`}</p>
+          <p className="tmTimeZone">{timeZoneOffset}</p>
         </div>);
     });
 

@@ -1,4 +1,4 @@
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fcc';
+const mongoURI = 'mongodb://localhost:27017/fcc' || process.env.MONGODB_URI || 'mongodb://localhost:27017/fcc';
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -16,6 +16,7 @@ const userSchema = new Schema({
   avatar: String,
   slackId: String,
   team: { type: String, ref: 'Teams' },
+  timeZoneOffset: Number,
 });
 
 // Team Schema

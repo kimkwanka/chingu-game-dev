@@ -4,6 +4,7 @@ const teamMember = (state = {
   name: '',
   avatar: '',
   lastLogin: '',
+  timeZoneOffset: 0,
 }, action) => state;
 
 const team = (state = {

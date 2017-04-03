@@ -53,7 +53,7 @@ const matchReactRoutes = (store, req, res, next) => (matchErr, redirect, props) 
 export default (req, res, next) => {
   // req.user is != undefined when successfully logged in with Slack (slackAuth.js)
   const timestamp = Date.now();
-  let user = { name: '', loggedIn: false, lastLogin: -1, avatar: '', teamId: '' };
+  let user = { name: '', loggedIn: false, lastLogin: -1, avatar: '', teamId: '', timeZoneOffset: 0 };
   let team = { name: '', id: '', members: [], tasks: [] };
   let store;
 
@@ -74,6 +74,7 @@ export default (req, res, next) => {
           avatar: dbUser.avatar,
           slackId: dbUser.slackId,
           team: dbUser.team._id,
+          timeZoneOffset: dbUser.timeZoneOffset,
         };
         team = {
           name: dbUser.team.name,
@@ -91,6 +92,7 @@ export default (req, res, next) => {
                 name: tm.name,
                 avatar: tm.avatar,
                 lastLogin: tm.lastLogin,
+                timeZoneOffset: tm.timeZoneOffset,
               };
               console.log('TM:', newTeamMember);
               team.members.push(newTeamMember);

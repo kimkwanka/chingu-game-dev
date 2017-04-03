@@ -21,6 +21,7 @@ const updateUserFromSlack = (user, slackMembers) => {
     if (sm.name === user.name) {
       ret.slackId = sm.id;
       ret.avatar = sm.profile.image_72;
+      ret.timeZoneOffset = sm.tz_offset;
     }
   });
   return ret;
@@ -50,6 +51,7 @@ const saveOrUpdateUser = (userId, teamId, slackMembers) => {
         slackId: '',
         team: teamId,
         lastLogin: -1,
+        timeZoneOffset: 0,
       });
       newUser = updateUserFromSlack(newUser, slackMembers);
 
