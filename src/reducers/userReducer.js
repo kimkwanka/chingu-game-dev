@@ -6,6 +6,7 @@ const user = (state = {
   slackId: '',
   teamId: '',
   timeZoneOffset: 0,
+  admin: false,
 }, action) => {
   switch (action.type) {
     case 'HYDRATE_USER':

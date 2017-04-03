@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Teams from '../json/teams.json';
 import { changeTeamName } from '../actions/teamActions';
 import socket from '../client/socket';
 

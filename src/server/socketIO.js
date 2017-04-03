@@ -1,4 +1,4 @@
-import { Users } from './db';
+import { Users, Teams } from './db';
 import tasksReducer from '../reducers/tasksReducer';
 
 const socketIO = (socket) => {
@@ -64,6 +64,15 @@ const socketIO = (socket) => {
           console.log('Updated: ', savedTeam);
         }
       });
+    });
+  });
+  socket.on('GET_ALL_TEAM_DATA', () => {
+    console.log('SOMEONE WANTS ALL DATA');
+    Teams.find({})
+    .populate('members')
+    .exec((err, teams) => {
+      console.log('Sent all team data');
+      socket.emit('GET_ALL_TEAM_DATA_SUCCESS', teams);
     });
   });
 };

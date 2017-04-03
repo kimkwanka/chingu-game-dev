@@ -1,5 +1,6 @@
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fcc';
+const mongoURI = (process.env.NODE_ENV !== 'production') ? 'mongodb://localhost:27017/fcc' : process.env.MONGODB_URI;
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 mongoose.connect(mongoURI);
