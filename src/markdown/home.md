@@ -137,7 +137,7 @@ With that fancy list you can easily assign those tasks to each individual team m
 
 ### 3. Let the Clone Wars begin!
 ![Clone](/assets/5.jpg)
-With all the prepaprations and planning out of the way, the juicy part of the project is about to begin. We'll create our own Super Mario Clone! 
+With all the preparations and planning out of the way, the juicy part of the project is about to begin. We'll create our own Super Mario Clone! 
 
 This is the most tricky part of it all - not only will it test your coding skills but also your ability to collaborate with your team.
 Coordinating the team and making sure it all works together is where the real difficulty will lie so prepare for a (somewhat) rough ride.
