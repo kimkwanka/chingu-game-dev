@@ -119,7 +119,7 @@ class TimeZones extends React.Component {
   }
   handleClick = () => {
     const open = !this.state.open;
-    this.state = Object.assign({}, this.state, { open });
+    this.state = Object.assign({}, this.state, { open, timeStr: '' });
     this.forceUpdate();
   }
   getValue = (tm) => {
