@@ -2,6 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeTeamName } from '../actions/teamActions';
 import socket from '../client/socket';
+import TimeZones from './TimeZones';
+
+const formatOffset = (offset) => {
+  const hour = offset - (offset % 1);
+  const minutes = (offset % 1) > 0 ? `:${(offset % 1) * 60}` : '';
+  return `${hour}${minutes}`;
+};
 
 class Team extends React.Component {
   constructor() {
@@ -66,6 +73,7 @@ class Team extends React.Component {
     socket.emit('CHANGE_TEAM_NAME', changeTeamName(this.state.tmpTeamName, this.props.userName));
     // console.log('CHANGE_TEAM_NAME', changeTeamName(this.state.tmpTeamName, this.props.userName));
   }
+
   render() {
     const totalProgress = this.getTotalProgress();
     const members = [];
@@ -83,7 +91,8 @@ class Team extends React.Component {
 
     this.props.teamMembers.forEach((tm) => {
       const lastLogin = (tm.lastLogin !== -1) ? new Date(tm.lastLogin).toLocaleString() : '---';
-      const timeZoneOffset = (tm.timeZoneOffset > 1) ? `Time Zone: UTC +${tm.timeZoneOffset / 3600}` : `Time Zone: UTC ${tm.timeZoneOffset / 3600}`;
+      const offsetStr = formatOffset(tm.timeZoneOffset / 3600);
+      const timeZoneOffset = (tm.timeZoneOffset > 1) ? `UTC +${offsetStr}` : `UTC ${offsetStr}`;
       members.push(
         <div className="teamMember">
           <img className="tmAvatar" src={tm.avatar} alt="" />
@@ -94,7 +103,7 @@ class Team extends React.Component {
     });
 
     return (
-      <div className="teamContent">
+      <div className="teamContent">        
         <h1 className="teamName">{this.props.teamName}</h1>
         <div className="teamNameChange">
           <input onKeyPress={this.handleKeyPress} onChange={this.handleChange} className="teamNameInput" type="text" value={this.state.tmpTeamName} />
@@ -103,6 +112,7 @@ class Team extends React.Component {
         <div className="teamMembers">
           {members}
         </div>
+        <TimeZones teamMembers={this.props.teamMembers} />
         <div className="teamProgress">
           <h1 className="teamProgressTotal">Total Progress: {totalProgress}</h1>
           {subProgresses}

@@ -2,16 +2,16 @@ import { Users, Teams } from './db';
 import tasksReducer from '../reducers/tasksReducer';
 
 const socketIO = (socket) => {
-  console.log('User connected');
+  // console.log('User connected');
   socket.on('disconnect', () => {
-    console.log('User disconnected');
+    // console.log('User disconnected');
   });
   socket.on('TASK_ACTION', (action) => {
     Users.findById(action.byUser)
     .populate('team')
     .exec((userErr, dbUser) => {
       if (dbUser.team.tasks.length === 0) {
-        console.log('TASKS_NOT_INITIALIZED', action);
+        // console.log('TASKS_NOT_INITIALIZED', action);
         socket.emit('TASKS_NOT_INITIALIZED', action);
       } else {
         const tmpTasks = tasksReducer(dbUser.team.tasks.toObject(), action);
@@ -20,7 +20,7 @@ const socketIO = (socket) => {
           if (dbSaveErr) {
             console.log('DB Save Tasks Error', dbSaveErr);
           } else {
-            console.log('Updated: ', savedTeam);
+            // console.log('Updated: ', savedTeam);
           }
           socket.emit('TASK_ACTION_SUCCESS', action);
           socket.broadcast.emit('TASK_ACTION_TEAM_MEMBER', action);
@@ -29,7 +29,7 @@ const socketIO = (socket) => {
     });
   });
   socket.on('INIT_TASKS', ({ tasks, originalAction }) => {
-    console.log('GOT NEW TASKS');
+    // console.log('GOT NEW TASKS');
     Users.findById(originalAction.byUser)
     .populate('team')
     .exec((userErr, dbUser) => {
@@ -39,7 +39,7 @@ const socketIO = (socket) => {
         if (dbSaveErr) {
           console.log('DB Save Tasks Error', dbSaveErr);
         } else {
-          console.log('Updated: ', savedTeam);
+          // console.log('Updated: ', savedTeam);
         }
         socket.emit('TASK_ACTION_SUCCESS', originalAction);
         socket.broadcast.emit('TASK_ACTION_TEAM_MEMBER', originalAction);
@@ -47,7 +47,7 @@ const socketIO = (socket) => {
     });
   });
   socket.on('TEAM_MEMBER_LOGIN', ({ userName, lastLogin }) => {
-    console.log('SOMEONE LOGGED IN:', userName, lastLogin);
+    // console.log('SOMEONE LOGGED IN:', userName, lastLogin);
     socket.broadcast.emit('TEAM_MEMBER_LOGIN', { userName, lastLogin });
   });
   socket.on('CHANGE_TEAM_NAME', (action) => {
@@ -61,17 +61,16 @@ const socketIO = (socket) => {
         } else {
           socket.emit('CHANGE_TEAM_NAME_SUCCESS', action);
           socket.broadcast.emit('CHANGE_TEAM_NAME_OTHER_TEAM_MEMBER', action);
-          console.log('Updated: ', savedTeam);
+          // console.log('Updated: ', savedTeam);
         }
       });
     });
   });
   socket.on('GET_ALL_TEAM_DATA', () => {
-    console.log('SOMEONE WANTS ALL DATA');
     Teams.find({})
     .populate('members')
     .exec((err, teams) => {
-      console.log('Sent all team data');
+      // console.log('Sent all team data');
       socket.emit('GET_ALL_TEAM_DATA_SUCCESS', teams);
     });
   });

@@ -92,6 +92,7 @@ const clientConfig = {
         BUILD_TARGET: JSON.stringify('client'),
       },
     }),
+    new webpack.optimize.DedupePlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({

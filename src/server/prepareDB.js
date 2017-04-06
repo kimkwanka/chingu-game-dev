@@ -2,7 +2,6 @@ import axios from 'axios';
 import { Users, Teams } from './db';
 import TeamsJSON from '../json/teams.json';
 
-const nMembers = 0;
 const token = process.env.SLACK_TOKEN || '';
 
 const getUserListFromSlack = (callback) => {
@@ -15,7 +14,6 @@ const getUserListFromSlack = (callback) => {
 };
 
 const updateUserFromSlack = (user, slackMembers) => {
-  const index = -1;
   const ret = user;
   slackMembers.forEach((sm) => {
     if (sm.name === user.name) {
@@ -40,7 +38,7 @@ const saveOrUpdateUser = (userId, teamId, slackMembers) => {
         if (saveErr) {
           console.log('DB User Save Error', saveErr);
         } else {
-          console.log('Updated: ', savedUser);
+          // console.log('Updated: ', savedUser);
         }
       });
     } else {
@@ -59,7 +57,7 @@ const saveOrUpdateUser = (userId, teamId, slackMembers) => {
         if (saveErr) {
           console.log('DB User Save Error', saveErr);
         } else {
-          console.log('Saved: ', savedUser);
+          // console.log('Saved: ', savedUser);
         }
       });
     }
@@ -77,7 +75,7 @@ const saveOrUpdateTeam = (id, members) => {
         if (saveErr) {
           console.log('DB Team Save Error', saveErr);
         } else {
-          console.log('Updated: ', savedTeam);
+          // console.log('Updated: ', savedTeam);
         }
       });
     } else {
@@ -91,7 +89,7 @@ const saveOrUpdateTeam = (id, members) => {
         if (saveErr) {
           console.log('DB Team Save Error', saveErr);
         } else {
-          console.log('Saved: ', savedTeam);
+          // console.log('Saved: ', savedTeam);
         }
       });
     }
@@ -99,6 +97,7 @@ const saveOrUpdateTeam = (id, members) => {
 };
 
 const prepareDB = () => {
+  console.log('Preparing DB');
   getUserListFromSlack((slackMembers) => {
     TeamsJSON.forEach((teamJSON) => {
       const members = [];
@@ -108,7 +107,6 @@ const prepareDB = () => {
       });
       saveOrUpdateTeam(teamJSON.id, members);
     });
-    console.log('Saved ', nMembers, ' members');
   });
 };
 

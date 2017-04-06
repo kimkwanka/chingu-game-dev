@@ -1,8 +1,23 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeTeamName } from '../actions/teamActions';
 import socket from '../client/socket';
 import TeamOverview from './TeamOverview';
+
+const sortById = (a, b) => {
+  if (a._id.length > b._id.length) {
+    return 1;
+  } else if (a._id.length < b._id.length) {
+    return -1;
+  }
+  if (a._id > b._id) {
+    return 1;
+  } else if (a._id < b._id) {
+    return -1;
+  }
+  return 0;
+};
 
 class Overview extends React.Component {
   constructor() {
@@ -10,31 +25,21 @@ class Overview extends React.Component {
     this.state = {
       teams: [],
     };
+    socket.on('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
   }
-  sortById(a, b) {
-    if (a._id.length > b._id.length) {
-      return 1;
-    } else if (a._id.length < b._id.length) {
-      return -1;
-    } else {
-      if (a._id > b._id) {
-        return 1;
-      } else if (a._id < b._id) {
-        return -1;
-      } 
-    }
-    return 0;
-  }
-  componentDidMount() {
+  componentWillMount() {
     socket.emit('GET_ALL_TEAM_DATA', {});
-    socket.on('GET_ALL_TEAM_DATA_SUCCESS', (data) => {
-      console.log('GET_ALL_TEAM_DATA_SUCCESS:', data);
-      this.state = {
-        teams: data.sort(this.sortById),
-      };
-      this.forceUpdate();
-    });
   }
+  componentWillUnmount() {
+    socket.removeListener('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
+  }
+  consumeSocketData = (data) => {
+    console.log('test');
+    this.state = {
+      teams: data.sort(sortById),
+    };
+    this.forceUpdate();
+  };
   render() {
     const teamOverviews = this.state.teams.map((team) => {
       if (team._id !== 'game-dev-team-76') {
@@ -50,24 +55,11 @@ class Overview extends React.Component {
   }
 }
 
+
 Overview.propTypes = {
-  userName: React.PropTypes.string.isRequired,
   isAdmin: React.PropTypes.bool.isRequired,
-  teamMembers: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  teamName: React.PropTypes.string.isRequired,
-  tasks: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-};
-Overview.defaultProps = {
-  team: {},
 };
 
 export default connect(store => ({
-  teamMembers: store.team.members,
-  teamName: store.team.name,
-  userName: store.user.name,
   isAdmin: store.user.admin,
-  userAvatar: store.user.avatar,
-  loggedIn: store.user.loggedIn,
-  tasks: store.team.tasks,
 }))(Overview);

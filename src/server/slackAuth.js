@@ -37,12 +37,12 @@ const slackAuth = (app) => {
     scope: ['identity.basic, identity.team'],
   }));
   app.get('/auth/slack/callback', passport.authenticate('slack'), (req, res) => {
-    console.log('Logged In.', req.user);
+    // console.log('Logged In.', req.user);
     res.redirect('/authsuccess');
   });
   app.get('/logout', (req, res) => {
     req.logout();
-    console.log('Logged out.');
+    // console.log('Logged out.');
     res.redirect('/');
   });
 };

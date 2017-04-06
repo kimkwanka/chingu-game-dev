@@ -13,18 +13,17 @@ const css = (process.env.NODE_ENV !== 'production') ? '' : 'link rel="stylesheet
 const webRoot = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8081' : '';
 
 const saveUserLoginToDB = (username, timestamp) => {
-  console.log('Look for that user...');
   Users.findById(username, (dbFindErr, foundUser) => {
     if (dbFindErr) {
       console.log('DB User FindById Error', dbFindErr);
     } else if (foundUser) {
-      console.log('Found:', foundUser);
+      // console.log('Found:', foundUser);
       foundUser.lastLogin = timestamp;
       foundUser.save((dbSaveErr, savedUser) => {
         if (dbSaveErr) {
           console.log('DB Save Error', dbSaveErr);
         } else {
-          console.log('Updated: ', savedUser);
+          // console.log('Updated: ', savedUser);
         }
       });
     } else {
@@ -95,7 +94,7 @@ export default (req, res, next) => {
                 lastLogin: tm.lastLogin,
                 timeZoneOffset: tm.timeZoneOffset,
               };
-              console.log('TM:', newTeamMember);
+              // console.log('TM:', newTeamMember);
               team.members.push(newTeamMember);
             });
           }
