@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeTeamName } from '../actions/teamActions';
 import socket from '../client/socket';
 import TeamOverview from './TeamOverview';
 
@@ -25,7 +24,9 @@ class Overview extends React.Component {
     this.state = {
       teams: [],
     };
-    socket.on('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
+    if (socket) {
+      socket.on('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
+    }
   }
   componentWillMount() {
     socket.emit('GET_ALL_TEAM_DATA', {});
