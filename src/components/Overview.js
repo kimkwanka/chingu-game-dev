@@ -29,10 +29,14 @@ class Overview extends React.Component {
     }
   }
   componentWillMount() {
-    socket.emit('GET_ALL_TEAM_DATA', {});
+    if (socket) {
+      socket.emit('GET_ALL_TEAM_DATA', {});
+    }
   }
   componentWillUnmount() {
-    socket.removeListener('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
+    if (socket) {
+      socket.removeListener('GET_ALL_TEAM_DATA_SUCCESS', this.consumeSocketData);
+    }
   }
   consumeSocketData = (data) => {
     console.log('test');
