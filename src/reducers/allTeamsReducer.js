@@ -15,6 +15,8 @@ const sortById = (a, b) => {
 
 const teams = (state = [], action) => {
   switch (action.type) {
+    case 'HYDRATE_TEAMS':
+      return action.teams;
     case 'SORT_BY_ID': {
       return state.sort(sortById);
     }
