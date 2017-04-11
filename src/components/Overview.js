@@ -5,7 +5,7 @@ import TeamOverview from './TeamOverview';
 
 class Overview extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: 'SORT_BY_ID' });
+  //  this.props.dispatch({ type: 'SORT_BY_ID' });
   }
   render() {
     const teamOverviews = this.props.teams.map((team) => {
