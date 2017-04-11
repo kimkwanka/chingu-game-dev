@@ -161,3 +161,5 @@ Even though the next links aren't JS specifc the theory behind it stays the same
   [OpenGameArt](https://opengameart.org/)
 
   [OpenGameGraphics](https://opengamegraphics.com/)
+
+  [2DGameArtGuru](http://www.2dgameartguru.com/)
