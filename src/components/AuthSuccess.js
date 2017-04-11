@@ -35,6 +35,6 @@ AuthSuccess.propTypes = {
 export default connect(store => ({
   user: store.user,
   team: store.team,
-  teams: store.team,
+  teams: store.teams,
 }))(AuthSuccess);
 
