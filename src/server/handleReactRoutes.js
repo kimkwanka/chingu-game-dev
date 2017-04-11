@@ -125,9 +125,7 @@ export default (req, res, next) => {
                 teams.push(newTeam);
               });
             }
-            console.log('ALL GOOD _________________________', teams.length);
             store = hydrateStore({ user, team, teams });
-            console.log(store.getState());
             match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
           });
         });

@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import { hydrateUser } from '../actions/userActions';
 import { hydrateTeam } from '../actions/teamActions';
+import { hydrateTeams } from '../actions/teamsActions';
 
 class Layout extends React.Component {
-  handleLogin = (user, team) => {
+  handleLogin = (user, team, teams) => {
     this.props.dispatch(hydrateUser(user));
     this.props.dispatch(hydrateTeam(team));
+    this.props.dispatch(hydrateTeams(teams));
   }
   render() {
     // Pass handleLogin to all children
