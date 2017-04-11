@@ -8,12 +8,11 @@ class Overview extends React.Component {
     this.props.dispatch({ type: 'SORT_BY_ID' });
   }
   render() {
-    console.log(this.props.teams);
-    const teamOverviews = this.props.teams.map((team) => {
+    const teamOverviews = [];
+    this.props.teams.forEach((team) => {
       if (team._id !== 'game-dev-team-76') {
-        return <TeamOverview isAdmin={this.props.isAdmin} team={team} />;
+        teamOverviews.push(<TeamOverview isAdmin={this.props.isAdmin} team={team} />);
       }
-      return null;
     });
     return (
       <div className="teamOverview">
