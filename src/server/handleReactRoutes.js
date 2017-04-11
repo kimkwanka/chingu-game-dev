@@ -7,7 +7,7 @@ import { match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
 import getRoutes from '../shared/routes';
 import { hydrateStore } from '../shared/store';
-import { Users } from './db';
+import { Users, Teams } from './db';
 
 const css = (process.env.NODE_ENV !== 'production') ? '' : 'link rel="stylesheet" href="/style.css"';
 const webRoot = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8081' : '';
@@ -54,6 +54,7 @@ export default (req, res, next) => {
   const timestamp = Date.now();
   let user = { name: '', loggedIn: false, lastLogin: -1, avatar: '', teamId: '', timeZoneOffset: 0, admin: false };
   let team = { name: '', id: '', members: [], tasks: [] };
+  const teams = [];
   let store;
 
   if (req.user) {
@@ -98,8 +99,36 @@ export default (req, res, next) => {
               team.members.push(newTeamMember);
             });
           }
-          store = hydrateStore({ user, team });
-          match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
+          Teams.find({})
+          .populate('members')
+          .exec((err, foundTeams) => {
+            if (err) {
+              console.log('DB Find All Teams Error', err);
+            }
+            // console.log('Sent all team data');
+            if (foundTeams) {
+              foundTeams.forEach((ft) => {
+                const newTeam = {
+                  name: ft.name,
+                  tasks: ft.tasks,
+                  members: [],
+                  _id: ft._id,
+                };
+                ft.members.forEach((m) => {
+                  newTeam.members.push({
+                    name: m.name,
+                    avatar: m.avatar,
+                    lastLogin: m.lastLogin,
+                    timeZoneOffset: m.timeZoneOffset,
+                  });
+                });
+                teams.push(newTeam);
+              });
+            }
+            store = hydrateStore({ user, team, teams });
+            match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
+          });
+          
         });
       } else {
         console.log('User not found in DB', req.user.name);

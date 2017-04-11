@@ -4210,7 +4210,7 @@ rc@~1.1.6:
 
 "react-markdown-loader@https://github.com/kimkwanka/react-markdown-loader.git":
   version "1.1.10"
-  resolved "https://github.com/kimkwanka/react-markdown-loader.git#fd5d7a999b03d624f71fc22da17a97a8673771b2"
+  resolved "https://github.com/kimkwanka/react-markdown-loader.git#76af09dbc0e36f460048d72316339275194c9b80"
   dependencies:
     camelize "^1.0.0"
     except "^0.1.3"

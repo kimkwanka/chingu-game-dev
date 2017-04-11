@@ -1,10 +1,11 @@
 import React from 'react';
+import ResourcesMarkdown from '../markdown/resources.md';
 
 class Resources extends React.Component {
   render() {
     return (
-      <div>
-        <h1>RESOURCES</h1>
+      <div className="homeContent resourcesContent">
+        <ResourcesMarkdown />
       </div>
     );
   }
