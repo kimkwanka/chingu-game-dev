@@ -125,20 +125,20 @@ export default (req, res, next) => {
                 teams.push(newTeam);
               });
             }
+            console.log('ALL GOOD _________________________', teams);
             store = hydrateStore({ user, team, teams });
             match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
           });
-          
         });
       } else {
         console.log('User not found in DB', req.user.name);
         user.loggedIn = true;
-        store = hydrateStore({ user, team });
+        store = hydrateStore({ user, team, teams });
         match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
       }
     });
   } else {
-    store = hydrateStore({ user, team });
+    store = hydrateStore({ user, team, teams });
     match({ routes: getRoutes(store), location: req.url }, matchReactRoutes(store, req, res, next));
   }
 };
