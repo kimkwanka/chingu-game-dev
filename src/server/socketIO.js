@@ -66,14 +66,14 @@ const socketIO = (socket) => {
       });
     });
   });
-  socket.on('GET_ALL_TEAM_DATA', () => {
+  /* socket.on('GET_ALL_TEAM_DATA', () => {
     Teams.find({})
     .populate('members')
     .exec((err, teams) => {
       // console.log('Sent all team data');
       socket.emit('GET_ALL_TEAM_DATA_SUCCESS', teams);
     });
-  });
+  });*/
 };
 
 export default socketIO;
