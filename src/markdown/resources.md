@@ -86,6 +86,14 @@ Note that there are more build tools around like Grunt but I feel that only Webp
 
    [Sprite Based Game With Canvas Tutorial](http://jlongster.com/Making-Sprite-based-Games-with-Canvas)
 
+   [JS HTML5 Canvas Game Tutorial (Youtube)](https://www.youtube.com/playlist?list=PLK1i2wADWyqRDJrmW6yG0PmF2TC6cnJWj)
+
+   [HTML5 Canvas Tutorial (Youtube)](https://www.youtube.com/watch?v=JM9_xJP8mNQ)
+
+   [HTML Canvas Tutorial (Youtube)](https://www.youtube.com/playlist?list=PLkyEadCJGLm0tPLdUnRRZ3WQYH50TvzUQ)
+
+   [Canvas Bootcamp (Youtube)](https://www.youtube.com/playlist?list=PLlkGN-8wjPHWYT_00xdUibDPfHZ3Zm8i3)
+
 If using the canvas is too barebones for you just take a look at these fancy (game) engines to create your next hit game:
 #### JS Full Game Engines / Frameworks
 
@@ -126,12 +134,14 @@ Game design is a super interesting topic in itself so if you want to delve deepe
 
   [Gamasutra](http://www.gamasutra.com/)
 
-### Game Dev Theory
-Even though the next links aren't JS specifc the theory behind it stays the same and the code should be easily transferable.
+### Game Dev Theory / Math
+Even though not all of the next links are JS specifc the theory behind it stays the same and the code should be easily transferable.
 
   [Collision Detection](http://jonathanwhiting.com/tutorial/collision/)
 
   [Gravity and Jumping](https://as3gametuts.com/2012/01/22/platformer-4/)
+
+  [Coding Math (Youtube)](https://www.youtube.com/playlist?list=PL7wAPgl1JVvUEb0dIygHzO4698tmcwLk9)
 
 ### Game Assets
 #### Sounds
@@ -147,6 +157,8 @@ Even though the next links aren't JS specifc the theory behind it stays the same
   [Super Mario sound effects](http://themushroomkingdom.net/wav.shtml)
 
 #### Music
+
+  [How to make Video Game Music (Youtube)](https://www.youtube.com/watch?v=pkvx-ipbmVg)
   
   [OpenGameArt: Music](https://opengameart.org/art-search-advanced?keys=&field_art_type_tid%5B%5D=12&sort_by=count&sort_order=DESC)
 
