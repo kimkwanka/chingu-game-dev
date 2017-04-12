@@ -137,9 +137,13 @@ Game design is a super interesting topic in itself so if you want to delve deepe
 ### Game Dev Theory / Math
 Even though not all of the next links are JS specifc the theory behind it stays the same and the code should be easily transferable.
 
+  [Tile Maps](https://developer.mozilla.org/en-US/docs/Games/Techniques/Tilemaps)
+
   [Collision Detection](http://jonathanwhiting.com/tutorial/collision/)
 
   [Gravity and Jumping](https://as3gametuts.com/2012/01/22/platformer-4/)
+
+  [Sprite Animation](http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/)
 
   [Coding Math (Youtube)](https://www.youtube.com/playlist?list=PL7wAPgl1JVvUEb0dIygHzO4698tmcwLk9)
 
