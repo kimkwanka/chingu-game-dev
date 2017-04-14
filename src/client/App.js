@@ -19,6 +19,11 @@ const isOnMyTeam = (userName) => {
   });
   return ret;
 };
+socket.on('error', () => {
+  console.log('Failed to connect');
+  socket.disconnect();
+  // socket.connect();
+});
 
 socket.on('connect', () => {
   // console.log('connect');

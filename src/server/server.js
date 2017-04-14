@@ -23,4 +23,14 @@ app.get('*', handleReactRoutes);
 
 app.use(express.static(path.join(__dirname, '../../dist/public')));
 
+app.use((err, req, res, next) => {
+  console.error('Express error:', err.stack);
+  //res.status(500).send('Something broke!');
+  next();
+});
+
+process.on('uncaughtException', (err) => {
+  console.log('Caught exception: ', err);
+});
+
 export default app;

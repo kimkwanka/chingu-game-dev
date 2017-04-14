@@ -3,6 +3,12 @@
 ### Here are some great resources to help you on your way to fame and fortune!
 If you have another gem to share, feel free to message me so I can add them to this list.
 
+These resources are meant to give you some pointers on a variety of topics to explore. Some might be helpful in regards to the Super Mario Clone, whereas some others will likely
+only really come in handy once in the "Game Jam" phase. 
+It also doesn't change the fact that the Clone is is suggested to be completed using pure js (with canvas).
+So feel free to take a look and use as much or as little as you want.
+
+
 ### Team and Project Management
 #### Github
 Git and Github are the defacto standards when it comes to Open Source project collaboration.
