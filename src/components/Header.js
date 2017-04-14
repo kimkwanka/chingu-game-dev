@@ -9,7 +9,7 @@ class Header extends React.Component {
     return (
       <header className={className}>
         <div className="headerContainer">
-          <IndexLink to="/"><h1 className="headerLogo"><span>Chingu!!</span><span>Game</span><span>Dev</span></h1></IndexLink>
+          <IndexLink to="/"><h1 className="headerLogo"><span>Chingu</span><span>Game</span><span>Dev</span></h1></IndexLink>
           <LoginButton handleLogin={this.props.handleLogin} loggedIn={this.props.loggedIn} />
           <Navigation />
         </div>
