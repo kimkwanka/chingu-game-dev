@@ -30,16 +30,6 @@
     ]
   },
   {
-    "id":"game-dev-team-4",
-    "name":"game-dev-team-4",
-    "members":[
-      "dmatt",
-      "josh5231",
-      "vkainth",
-      "dave"
-    ]
-  },
-  {
     "id":"game-dev-team-5",
     "name":"game-dev-team-5",
     "members":[
@@ -93,8 +83,8 @@
     "name":"game-dev-team-10",
     "members":[
       "tarryn",
-      "coffeecraftcode",
-      "beemyfriend"
+      "beemyfriend",
+      "josh5231"
     ]
   },
   {
@@ -121,7 +111,6 @@
     "id":"game-dev-team-13",
     "name":"game-dev-team-13",
     "members":[
-      "buoyantair",
       "itsdpm",
       "kk",
       "thezaff"
@@ -160,10 +149,7 @@
     "id":"game-dev-team-17",
     "name":"game-dev-team-17",
     "members":[
-      "ipresilia",
-      "rtyrolia",
-      "eelsie",
-      "nurankarin"
+      "rtyrolia"
     ]
   },
   {
@@ -190,7 +176,6 @@
     "name":"game-dev-team-21",
     "members":[
       "orhalimi",
-      "olzhas", 
       "abhioncode",
       "matthew-burfield"
     ]

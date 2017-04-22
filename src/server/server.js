@@ -9,7 +9,7 @@ const path = require('path');
 
 const handleReactRoutes = require('./handleReactRoutes').default;
 
-prepareDB();
+// prepareDB();
 
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
