@@ -23,7 +23,7 @@ class TeamOverview extends React.Component {
       }
     });
     return `${completedTasks}/${totalTasks}`;
-  }
+  };
   getCategories = () => {
     const tasks = this.props.team.tasks;
     const categories = [];
@@ -34,7 +34,7 @@ class TeamOverview extends React.Component {
       }
     });
     return categories;
-  }
+  };
   getCategoryProgress = (cat) => {
     const tasks = this.props.team.tasks;
     let totalTasks = 0;
@@ -48,7 +48,7 @@ class TeamOverview extends React.Component {
       }
     });
     return `${completedTasks}/${totalTasks}`;
-  }
+  };
 
   render() {
     const totalProgress = this.getTotalProgress();
@@ -62,35 +62,48 @@ class TeamOverview extends React.Component {
 
     const subProgresses = [];
     catProgress.forEach((cp, i) => {
-      subProgresses.push(<h3>{categories[i]}: {cp}</h3>);
+      subProgresses.push(
+        <h3>
+          {categories[i]}: {cp}
+        </h3>,
+      );
     });
 
     this.props.team.members.forEach((tm) => {
-      const lastLoginStr= (tm.lastLogin !== -1) ? new Date(tm.lastLogin).toLocaleString() : '---';
-      const timeZoneOffset = (tm.timeZoneOffset > 1) ? `Time Zone: UTC +${tm.timeZoneOffset / 3600}` : `Time Zone: UTC ${tm.timeZoneOffset / 3600}`;
-      const lastLogin = this.props.isAdmin ? <p className="tmLastLogin">{`Last login: ${lastLoginStr}`}</p> : null;
+      const lastLoginStr =
+        tm.lastLogin !== -1 ? new Date(tm.lastLogin).toLocaleString() : '---';
+      const timeZoneOffset =
+        tm.timeZoneOffset > 1
+          ? `Time Zone: UTC +${tm.timeZoneOffset / 3600}`
+          : `Time Zone: UTC ${tm.timeZoneOffset / 3600}`;
+      const lastLogin = this.props.isAdmin ? (
+        <p className="tmLastLogin">{`Last login: ${lastLoginStr}`}</p>
+      ) : null;
       members.push(
         <div className="teamMember">
-          <img className="tmAvatar" src={tm.avatar} alt="" />
+          <img
+            className="tmAvatar"
+            src={`https://i.pravatar.cc/100?u=${tm.name}`}
+            alt=""
+          />
           <h2 className="tmName">{tm.name}</h2>
           {lastLogin}
           <p className="tmTimeZone">{timeZoneOffset}</p>
-        </div>);
+        </div>,
+      );
     });
     const progress = this.props.isAdmin ? (
       <div className="teamProgress">
         <h1 className="teamProgressTotal">Total Progress: {totalProgress}</h1>
         {subProgresses}
       </div>
-      ) : null;
+    ) : null;
     return (
       <div className="teamContent">
         <h1 className="teamName">{this.props.team.name}</h1>
         <h2 className="teamId">{this.props.team._id}</h2>
-        <div className="teamMembers">
-          {members}
-        </div>
-          {progress}
+        <div className="teamMembers">{members}</div>
+        {progress}
       </div>
     );
   }
@@ -110,4 +123,3 @@ TeamOverview.defaultProps = {
 };
 
 export default TeamOverview;
-

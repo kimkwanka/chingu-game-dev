@@ -6,7 +6,7 @@ import TimeZones from './TimeZones';
 
 const formatOffset = (offset) => {
   const hour = offset - (offset % 1);
-  const minutes = (offset % 1) > 0 ? `:${(offset % 1) * 60}` : '';
+  const minutes = offset % 1 > 0 ? `:${(offset % 1) * 60}` : '';
   return `${hour}${minutes}`;
 };
 
@@ -33,7 +33,7 @@ class Team extends React.Component {
       }
     });
     return `${completedTasks}/${totalTasks}`;
-  }
+  };
   getCategories = () => {
     const tasks = this.props.tasks;
     const categories = [];
@@ -44,7 +44,7 @@ class Team extends React.Component {
       }
     });
     return categories;
-  }
+  };
   getCategoryProgress = (cat) => {
     const tasks = this.props.tasks;
     let totalTasks = 0;
@@ -58,21 +58,24 @@ class Team extends React.Component {
       }
     });
     return `${completedTasks}/${totalTasks}`;
-  }
+  };
   handleChange = (e) => {
     this.state = {
       tmpTeamName: e.target.value,
     };
-  }
+  };
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       this.handleClick();
     }
-  }
+  };
   handleClick = () => {
-    socket.emit('CHANGE_TEAM_NAME', changeTeamName(this.state.tmpTeamName, this.props.userName));
+    socket.emit(
+      'CHANGE_TEAM_NAME',
+      changeTeamName(this.state.tmpTeamName, this.props.userName),
+    );
     // console.log('CHANGE_TEAM_NAME', changeTeamName(this.state.tmpTeamName, this.props.userName));
-  }
+  };
 
   render() {
     const totalProgress = this.getTotalProgress();
@@ -86,32 +89,49 @@ class Team extends React.Component {
 
     const subProgresses = [];
     catProgress.forEach((cp, i) => {
-      subProgresses.push(<h3>{categories[i]}: {cp}</h3>);
+      subProgresses.push(
+        <h3>
+          {categories[i]}: {cp}
+        </h3>,
+      );
     });
 
     this.props.teamMembers.forEach((tm) => {
-      const lastLogin = (tm.lastLogin !== -1) ? new Date(tm.lastLogin).toLocaleString() : '---';
+      const lastLogin =
+        tm.lastLogin !== -1 ? new Date(tm.lastLogin).toLocaleString() : '---';
       const offsetStr = formatOffset(tm.timeZoneOffset / 3600);
-      const timeZoneOffset = (tm.timeZoneOffset > 1) ? `UTC +${offsetStr}` : `UTC ${offsetStr}`;
+      const timeZoneOffset =
+        tm.timeZoneOffset > 1 ? `UTC +${offsetStr}` : `UTC ${offsetStr}`;
       members.push(
         <div className="teamMember">
-          <img className="tmAvatar" src={tm.avatar} alt="" />
+          <img
+            className="tmAvatar"
+            src={`https://i.pravatar.cc/100?u=${tm.name}`}
+            alt=""
+          />
           <h2 className="tmName">{tm.name}</h2>
           <p className="tmLastLogin">{`Last login: ${lastLogin}`}</p>
           <p className="tmTimeZone">{timeZoneOffset}</p>
-        </div>);
+        </div>,
+      );
     });
 
     return (
-      <div className="teamContent">        
+      <div className="teamContent">
         <h1 className="teamName">{this.props.teamName}</h1>
         <div className="teamNameChange">
-          <input onKeyPress={this.handleKeyPress} onChange={this.handleChange} className="teamNameInput" type="text" value={this.state.tmpTeamName} />
-          <button onClick={this.handleClick} className="teamNameInputOKButton">OK</button>
+          <input
+            onKeyPress={this.handleKeyPress}
+            onChange={this.handleChange}
+            className="teamNameInput"
+            type="text"
+            value={this.state.tmpTeamName}
+          />
+          <button onClick={this.handleClick} className="teamNameInputOKButton">
+            OK
+          </button>
         </div>
-        <div className="teamMembers">
-          {members}
-        </div>
+        <div className="teamMembers">{members}</div>
         <TimeZones teamMembers={this.props.teamMembers} />
         <div className="teamProgress">
           <h1 className="teamProgressTotal">Total Progress: {totalProgress}</h1>
@@ -134,7 +154,7 @@ Team.defaultProps = {
   team: {},
 };
 
-export default connect(store => ({
+export default connect((store) => ({
   teamMembers: store.team.members,
   teamName: store.team.name,
   userName: store.user.name,

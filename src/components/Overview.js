@@ -11,14 +11,12 @@ class Overview extends React.Component {
     const teamOverviews = [];
     this.props.teams.forEach((team) => {
       if (team._id !== 'game-dev-team-76') {
-        teamOverviews.push(<TeamOverview isAdmin={this.props.isAdmin} team={team} />);
+        teamOverviews.push(
+          <TeamOverview isAdmin={this.props.isAdmin} team={team} />,
+        );
       }
     });
-    return (
-      <div className="teamOverview">
-        {teamOverviews}
-      </div>
-    );
+    return <div className="teamOverview">{teamOverviews}</div>;
   }
 }
 
@@ -28,7 +26,7 @@ Overview.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
 };
 
-export default connect(store => ({
+export default connect((store) => ({
   isAdmin: store.user.admin,
   teams: store.teams,
 }))(Overview);
