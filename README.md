@@ -1,7 +1,7 @@
 # chingu-game-dev
 Project Managment Site for the Chingu Game Dev Workshop
 
-This app leads the participants through the different stages of the workshop and allows progress trackings of the individual team members
+This app leads the participants through the different stages of the workshop and allows progress tracking of the individual team members
 but also the teams as a whole. The synchronization of progress, team and member data (Redux store) is achieved via Socket.io.
 
 Additionally, it tries to streamline scheduling meetings by providing a time zone conversion widget
