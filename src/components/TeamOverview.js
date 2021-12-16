@@ -63,7 +63,7 @@ class TeamOverview extends React.Component {
     const subProgresses = [];
     catProgress.forEach((cp, i) => {
       subProgresses.push(
-        <h3>
+        <h3 key={categories[i]}>
           {categories[i]}: {cp}
         </h3>,
       );
@@ -80,7 +80,7 @@ class TeamOverview extends React.Component {
         <p className="tmLastLogin">{`Last login: ${lastLoginStr}`}</p>
       ) : null;
       members.push(
-        <div className="teamMember">
+        <div className="teamMember" key={tm.name}>
           <img
             className="tmAvatar"
             src={`https://i.pravatar.cc/100?u=${tm.name}`}

@@ -12,7 +12,7 @@ class Overview extends React.Component {
     this.props.teams.forEach((team) => {
       if (team._id !== 'game-dev-team-76') {
         teamOverviews.push(
-          <TeamOverview isAdmin={this.props.isAdmin} team={team} />,
+          <TeamOverview key={team._id} isAdmin={this.props.isAdmin} team={team} />,
         );
       }
     });

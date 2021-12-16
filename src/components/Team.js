@@ -90,7 +90,7 @@ class Team extends React.Component {
     const subProgresses = [];
     catProgress.forEach((cp, i) => {
       subProgresses.push(
-        <h3>
+        <h3 key={categories[i]}>
           {categories[i]}: {cp}
         </h3>,
       );
@@ -103,7 +103,7 @@ class Team extends React.Component {
       const timeZoneOffset =
         tm.timeZoneOffset > 1 ? `UTC +${offsetStr}` : `UTC ${offsetStr}`;
       members.push(
-        <div className="teamMember">
+        <div className="teamMember" key={tm.name}>
           <img
             className="tmAvatar"
             src={`https://i.pravatar.cc/100?u=${tm.name}`}
