@@ -1,6 +1,6 @@
 const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
-const usePreact = true; // Enable to replace React with Preact for much smaller build sizes
+const usePreact = false; // Enable to replace React with Preact for much smaller build sizes
 
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
